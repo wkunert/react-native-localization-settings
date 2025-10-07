@@ -36,6 +36,16 @@ RCT_EXPORT_MODULE()
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+- (void)getLanguage:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
+    resolve([self getCurrentLanguage]);
+}
+
+
+- (void)setLanguage:(NSString *)lang {
+    [self setCurrentLanguage:lang];
+}
+
 /**
  * Expose functions to react-native
  **/
@@ -43,13 +53,13 @@ RCT_REMAP_METHOD(getLanguage,
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withReject:(RCTPromiseRejectBlock)reject)
 {
-    resolve([self getCurrentLanguage]);
+    return [self getLanguage:resolve reject:reject];
 }
 
 RCT_REMAP_METHOD(setLanguage,
                  language:(NSString *)lang)
 {
-    [self setCurrentLanguage:lang];
+    return [self setLanguage:lang];
 }
 
 /**
@@ -59,6 +69,7 @@ RCT_REMAP_METHOD(setLanguage,
 {
     return @{ @"language": [self getCurrentLanguage]};
 }
+
 +(BOOL)requiresMainQueueSetup
 {
     return YES;
@@ -71,6 +82,11 @@ RCT_REMAP_METHOD(setLanguage,
 {
     return std::make_shared<facebook::react::NativeLocalizationSettingsSpecJSI>(params);
 }
+
+- (facebook::react::ModuleConstants<JS::NativeLocalizationSettings::Constants::Builder>)getConstants {
+  return [self constantsToExport];
+}
+
 #endif
 
 @end
