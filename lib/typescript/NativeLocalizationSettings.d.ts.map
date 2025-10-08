@@ -1,0 +1,1 @@
+{"version":3,"file":"NativeLocalizationSettings.d.ts","sourceRoot":"","sources":["../../src/NativeLocalizationSettings.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,cAAc,CAAC;AAGhD,MAAM,WAAW,IAAK,SAAQ,WAAW;IACvC,WAAW,IAAI,OAAO,CAAC,MAAM,CAAC,CAAC;IAC/B,WAAW,CAAC,IAAI,EAAE,MAAM,GAAG,IAAI,CAAC;IAChC,YAAY,IAAI;QACd,QAAQ,EAAE,MAAM,CAAC;KAClB,CAAC;CACH;;AAED,wBAA8E"}
